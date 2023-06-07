@@ -5,12 +5,13 @@ import styles from "./page.module.css";
 import { gsap } from "gsap";
 //importing gsap scrolltrigger throws console log error
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const tl = useRef();
   const h1Ref = useRef();
   useEffect(() => {
+    //moving registerplugin to useeffect fixes the erro
+    gsap.registerPlugin(ScrollTrigger);
     let ctx = gsap.context(() => {
       gsap.fromTo(
         h1Ref.current,
@@ -19,7 +20,7 @@ export default function Home() {
         },
         {
           opacity: 1,
-          duration: 1,
+          duration: 3,
         }
       );
     });
@@ -28,7 +29,9 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <h1 ref={h1Ref}>Hello World</h1>
+      <h1 ref={h1Ref} className={styles.h1}>
+        Hello World
+      </h1>
     </main>
   );
 }
