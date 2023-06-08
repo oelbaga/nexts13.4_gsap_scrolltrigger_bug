@@ -10,6 +10,8 @@ export default function Home() {
   const tl = useRef();
   const h1Ref = useRef();
   useEffect(() => {
+    document.body.classList.add("test-class");
+    document.body.style.color = "red";
     //moving registerplugin to useeffect fixes the erro
     gsap.registerPlugin(ScrollTrigger);
     let ctx = gsap.context(() => {
